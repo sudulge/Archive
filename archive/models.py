@@ -10,6 +10,7 @@ class Article(models.Model):
     content = models.TextField()
     thumbnail = models.ImageField(upload_to='archive', null=True, blank=True)
     create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.title

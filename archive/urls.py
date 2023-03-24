@@ -10,4 +10,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:article_id>/', views.detail, name='detail'),
     path('article/create/', views.article_create, name='article_create'),
+    path('article/modify/<int:article_id>/', views.article_modify, name='article_modify')
 ]

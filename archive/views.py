@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.contrib import messages
 from .models import Article
 from .forms import ArticleForm
 
@@ -27,4 +28,22 @@ def article_create(request):
     else:
         form = ArticleForm()
     context = {'form': form}
+    return render(request, 'archive/article_form.html', context)
+
+
+#@login_required(login_url='common:login') 로그인이 필요한 함수. 
+def article_modify(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    print(article.title)
+    print(article.content)
+    if request.method == "POST":
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.modify_date = timezone.now()
+            article.save()
+            return redirect('archive:detail', article_id=article_id)
+    else:
+        form = ArticleForm(instance=article)
+    context = {'form':form}
     return render(request, 'archive/article_form.html', context)

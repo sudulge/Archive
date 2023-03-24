@@ -96,7 +96,11 @@ body {
     margin-bottom: 30px;
     font-size: 80px;
 }
-.content_content header div {
+.content_content header .header_container {
+    display: flex;
+    justify-content: flex-end;
+}
+.content_content header .header_container div {
     text-align: right;
     font-size: 30px;
 }

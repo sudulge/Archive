@@ -6,8 +6,11 @@
 
         <header>
             <h1>{{ article.title }}</h1>
-            <div class="create_date">
-                {{ article.create_date }}
+            <div class="header_container">
+                <div class="create_date">
+                    {{ article.create_date }}
+                </div>
+                <a href="{% url 'archive:article_modify' article.id %}">수정</a>
             </div>
         </header>
         
