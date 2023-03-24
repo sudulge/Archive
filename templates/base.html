@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sudulge's archive</title>
+
+    <link rel="stylesheet" text="text/css", href="{% static 'style.css' %}?after">
+</head>
+<body>
+    <div id="wrap">
+
+        <!-- 헤더 nav 파일로 분리 책 3-01 -->
+        <header>
+            <div class="home">
+                <a href="{% url 'archive:index' %}">Archive</a>
+            </div>
+            <div class="user">
+                {% if user.is_authenticated %}
+                <a class="logout" href="{% url 'common:logout' %}">{{ user.username }} 로그아웃</a>
+                {% else %}
+                <a class="login" href="{% url 'common:login' %}">로그인</a>
+                <a class="sign_up" href="{% url 'common:signup' %}">회원가입</a>
+                {% endif %}
+            </div>
+        </header>
+
+        <div id="container">
+            <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+            {% block content %}
+            {% endblock %}
+            <!-- 기본 템플릿 안에 삽입될 내용 End -->
+        </div>
+        
+    </div>
+</body>
+</html>

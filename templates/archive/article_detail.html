@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content_wrap">
+    <div class="content_content">
+
+        <header>
+            <h1>{{ article.title }}</h1>
+            <div class="create_date">
+                {{ article.create_date }}
+            </div>
+        </header>
+        
+    <div class="content_text">
+        {{ article.content }}
+    </div>
+    
+    <div>
+        <a href="{% url 'archive:index' %}">메인으로</a>
+    </div>
+    {% if article.thumbnail %}
+    <img src="{{ article.thumbnail.url }}" width="700">
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

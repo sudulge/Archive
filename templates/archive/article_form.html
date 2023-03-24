@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h5>글등록</h5>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>제목: </div>
+        <textarea name="title" id="title" rows="1"></textarea>
+
+        <div>내용: </div>
+        <textarea name="content" id="content" rows="15"></textarea>
+
+        <div>대표 이미지: </div>
+        <input type="file" name="thumbnail" id="thumbnail">
+        
+        <input type="submit" value="저장하기">
+    </form>
+</div>
+
+{% endblock %}  

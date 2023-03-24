@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="moive_wrap">
+    <div class="movie_content">
+        <div class="movie_header">
+            영화
+            <a href="{% url 'archive:article_create' %}">글 등록하기</a>
+        </div>
+    
+        <div class="movie_list">
+            {% if article_list %}
+    
+                {% for article in article_list %}
+                    <div class="movie" id="{{ article.id }}">
+                        <a href="{% url 'archive:detail' article.id %}">
+                        {% if article.thumbnail %}
+                            <img src="{{ article.thumbnail.url }}" alt="{{ article.thumbnail }}">
+                        {% endif %}
+                        </a>
+                        <div class="movie_name">
+                            <a href="{% url 'archive:detail' article.id %}">{{ article.title }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+    
+            {% else %}
+                <p>글이 없습니다.</p>
+    
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- 글 안에 css 수정, 호버애니메이션 추가 -->
